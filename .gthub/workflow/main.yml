@@ -1,5 +1,7 @@
 name: Run tests and publish report
+
 on: [push]
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -11,8 +13,7 @@ jobs:
         with:
           distribution: zulu
           java-version: 18
-      - uses: Xotabu4/selenoid-github-action@v2
-
+      - uses: Xotabu4/selenoid-github-action@v3
       - name: Run tests
         run: ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub
 
@@ -25,12 +26,13 @@ jobs:
           path: gh-pages
 
       - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
+        uses: simple-elf/allure-report-action@master
         if: always()
         with:
           gh_pages: gh-pages
-          allure_history: allure-history
           allure_results: build/allure-results
+          allure_report: allure-report
+          allure_history: allure-history
 
       - name: Publish test report
         uses: peaceiris/actions-gh-pages@v3
