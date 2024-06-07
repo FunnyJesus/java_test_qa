@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LoginTest extends BaseTest {
 
     @Test
-    @Owner("Gosling2")
+    @Owner("Gosling")
     @Description("Validation Inventory menu")
     void test() {
         assertThat(page.checkInventory()).isTrue();
