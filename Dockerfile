@@ -35,7 +35,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN ./gradlew build
+RUN ./gradlew test
 
 
-CMD ["./gradlew", "test"]
+CMD ["bash"]

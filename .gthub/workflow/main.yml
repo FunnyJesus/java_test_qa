@@ -20,7 +20,7 @@ jobs:
         uses: Xotabu4/selenoid-github-action@v3
 
       - name: Запустить тесты
-        run: ./gradlew --warning-mode all clean test
+        run: ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub
 
       - name: Загрузить историю отчета тестов
         uses: actions/checkout@v3
