@@ -1,4 +1,4 @@
-name: Запуск тестов и публикация отчета
+name: Test
 
 on: [push]
 
@@ -18,5 +18,9 @@ jobs:
 
       - name: Запустить тесты
         run: ./gradlew clean test
+
+
+
+
 
 
