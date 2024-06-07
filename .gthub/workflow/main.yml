@@ -1,23 +1,28 @@
-name: Run tests and publish report
+name: Запуск тестов и публикация отчета
 
 on: [push]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: Set up JDK
+    steps:
+      - name: Проверить код
+        uses: actions/checkout@v3
+
+      - name: Настроить JDK
         uses: actions/setup-java@v3
         with:
           distribution: zulu
           java-version: 18
-      - uses: Xotabu4/selenoid-github-action@v3
-      - name: Run tests
-        run: ./gradlew clean test
 
-      - name: Load test report history
+      - name: Настроить Selenoid
+        uses: Xotabu4/selenoid-github-action@v3
+
+      - name: Запустить тесты
+        run: ./gradlew --warning-mode all clean test
+
+      - name: Загрузить историю отчета тестов
         uses: actions/checkout@v3
         if: always()
         continue-on-error: true
@@ -25,7 +30,7 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Build test report
+      - name: Построить отчет тестов
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
@@ -34,10 +39,10 @@ jobs:
           allure_report: allure-report
           allure_history: allure-history
 
-      - name: Publish test report
+      - name: Опубликовать отчет тестов
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: allure-report
