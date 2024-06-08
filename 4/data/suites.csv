@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Jun 08 11:10:10 GMT 2024","Sat Jun 08 11:10:12 GMT 2024","1611","","tests.web.tests.LoginTest","","tests.web.tests.LoginTest","test2","test2()","Validation Menu left side"
+"passed","Sat Jun 08 11:10:06 GMT 2024","Sat Jun 08 11:10:10 GMT 2024","4647","","tests.web.tests.LoginTest","","tests.web.tests.LoginTest","test","test()","Validation Inventory menu"
+"passed","Sat Jun 08 11:10:03 GMT 2024","Sat Jun 08 11:10:06 GMT 2024","3217","","tests.api.RegressTest","","tests.api.RegressTest","checkAvatar","checkAvatar()",""
